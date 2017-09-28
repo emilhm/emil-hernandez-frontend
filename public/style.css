@@ -8,3 +8,17 @@ nav .input-group{
 nav .form-control{
   max-width: 450px;
 }
+nav .dropdown-item{
+  cursor: pointer;
+  padding: .20rem 0rem;
+}
+nav .sublevel{
+  color: gray;
+}
+nav .sublevel-1{
+  font-weight: bold;
+  margin-left: 0 !important;
+}
+nav .finalLevel{
+  color: black;
+}

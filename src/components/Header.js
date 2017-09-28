@@ -1,27 +1,18 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import Categories from './Categories/Categories'
 
 class Header extends Component {
-  renderCategories = (categories = [], key) => {
-    let currentKey
-    key === undefined ? currentKey = 1 : currentKey = key + 1
-    return (
-      categories.map((item) => {
-        if (item.sublevels) {
-          return (
-            <div>
-              <a key={`${item.id}-${currentKey}`} className={`dropdown-item margin-${currentKey}`}>{item.name}</a>
-              { this.renderCategories(item.sublevels, currentKey) }
-            </div>
-          )
-        }
-        return (<a key={item.id} className="dropdown-item">{item.name}</a>)
-      })
-    )
+  constructor(props){
+    super(props)
+    this.state = {
+      selectCategory: undefined,
+      selectCategoryName: undefined,
+    }
+  }
+  onClick = (item) =>{
+    this.setState({selectCategory: item, selectCategoryName: item.name})
   }
   render() {
-    const { categories } = this.props
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
         <a className="navbar-brand" href="/">El Baraton</a>
@@ -30,10 +21,10 @@ class Header extends Component {
             <input type="text" className="form-control" aria-label="Text input with dropdown button" />
             <div className="input-group-btn">
               <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Categorias
+                {this.state.selectCategoryName || "Categorias" }
               </button>
               <div className="dropdown-menu">
-                { this.renderCategories(categories) }
+                  <Categories onClick={this.onClick} />
               </div>
             </div>
           </div>
@@ -43,12 +34,4 @@ class Header extends Component {
   }
 }
 
-Header.propTypes = {
-  categories: PropTypes.array,
-}
-
-function mapStateToProps(state) {
-  return { categories: state.categories }
-}
-
-export default connect(mapStateToProps, null)(Header)
+export default Header
