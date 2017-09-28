@@ -1,0 +1,10 @@
+nav .navbar-brand{
+  max-width: 125px;
+}
+nav .input-group{
+  width: 100% !important;
+  justify-content: center;
+}
+nav .form-control{
+  max-width: 450px;
+}

@@ -5,10 +5,19 @@ import App from 'components/App'
 import { render } from 'react-dom'
 import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { compose, applyMiddleware, createStore } from 'redux'
+import thunk from 'redux-thunk'
 import storeApp from './reducer'
 
-const store = createStore(storeApp)
+const middleware = [
+  thunk, // Allows action creators to return functions (not just plain objects)
+]
+
+const store = compose(
+  applyMiddleware(...middleware),
+)(createStore)(storeApp)
+
+// const store = createStore(storeApp)
 
 const renderApp = () => (
   <Provider store={store}>
