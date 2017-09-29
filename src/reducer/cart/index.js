@@ -1,6 +1,6 @@
-const initialState = {}
+const initialState = []
 
-export default function products(state = initialState, action) {
+export default function cart(state = initialState, action) {
   switch (action.type) {
     case 'SET_CART':
       return action.data
