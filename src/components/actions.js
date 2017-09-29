@@ -1,4 +1,4 @@
-export function setCategories(data) {
+function setCategories(data) {
   return (dispatch) => {
     dispatch({
       type: 'SET_CATEGORIES',
@@ -7,7 +7,7 @@ export function setCategories(data) {
   }
 }
 
-export function setProducts(data) {
+function setProducts(data) {
   return (dispatch) => {
     dispatch({
       type: 'SET_PRODUCTS',
@@ -15,3 +15,14 @@ export function setProducts(data) {
     })
   }
 }
+
+function setCart(data) {
+  return (dispatch) => {
+    dispatch({
+      type: 'SET_CART',
+      data: data
+    });
+  }
+}
+
+export { setCategories, setProducts, setCart }

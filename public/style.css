@@ -1,3 +1,6 @@
+nav{
+  margin-bottom: 1rem;
+}
 nav .navbar-brand{
   max-width: 125px;
 }
@@ -7,4 +10,26 @@ nav .input-group{
 }
 nav .form-control{
   max-width: 450px;
+}
+.content-product{
+  background: #007bff;
+  position: relative;
+  padding: 1.5rem 0.5rem;
+  color: lightgray;
+  font-weight: 600;
+  border-radius: 10px;
+}
+.product{
+  padding: 0.25rem;
+  margin-bottom: 1rem
+}
+.fa-circle{
+  color: limegreen;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+.content-product h3 {
+  font-weight: bold;
+  color: darkslategray;
 }
