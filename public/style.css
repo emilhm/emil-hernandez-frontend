@@ -1,3 +1,4 @@
+/*HEADER*/
 nav{
   margin-bottom: 1rem;
 }
@@ -11,20 +12,36 @@ nav .input-group{
 nav .form-control{
   max-width: 450px;
 }
-nav .dropdown-item{
+nav .categories .dropdown-item{
   cursor: pointer;
   padding: .20rem 0rem;
 }
-nav .sublevel{
+.sublevel{
   color: gray;
 }
-nav .sublevel-1{
+.sublevel-1{
   font-weight: bold;
   margin-left: 0 !important;
 }
 nav .finalLevel{
   color: black;
 }
+.dropdown-menu-right{
+  right: 0;
+  left: unset;
+}
+.cardCant{
+  background: red;
+  padding: 1px 7px;
+  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+  float: right;
+  font-style: inherit;
+}
+
+/*product*/
+
 .content-product{
   background: #007bff;
   position: relative;
@@ -37,7 +54,7 @@ nav .finalLevel{
   padding: 0.25rem;
   margin-bottom: 1rem
 }
-.fa-circle{
+.content-product .fa-circle{
   color: limegreen;
   position: absolute;
   right: 10px;
@@ -47,4 +64,26 @@ nav .finalLevel{
   font-weight: bold;
   color: darkslategray;
 }
+
+/* categories */
+
+.categoriesComponent{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.categoriesComponent > .sublevel {
+  width: 100%;
+  min-width: 250px;
+  text-align: center;
+  margin-bottom: .5rem;
+}
+@media (min-width: 530px)  {
+  .categoriesComponent > .sublevel {
+    max-width: 25%;
+  }
+}
+.categoriesComponent .finalLevel  {
+  cursor: pointer;
+  color: black;
 }

@@ -21,7 +21,7 @@ class Products extends Component {
       cart.splice(index, 1)
     }
     this.setState({ cart })
-    setCart(cart)
+    this.props.setCart(cart)
   }
   renderProducts = () => {
     const { products } = this.props
@@ -50,9 +50,9 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps() {
-  return { setCart }
-}
+const mapDispatchToProps = {
+  setCart
+};
 
 Products.propTypes = {
   products: PropTypes.array,

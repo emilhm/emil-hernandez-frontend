@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Categories from './Categories/Categories'
+import MenuHeader from './menuHeader/menuHeader'
 
 class Header extends Component {
   constructor(props){
@@ -9,6 +10,9 @@ class Header extends Component {
       selectCategoryName: undefined,
     }
   }
+  shouldComponentUpdate(nextProps, nextState) {
+    return true;
+  }
   onClick = (item) =>{
     this.setState({selectCategory: item, selectCategoryName: item.name})
   }
@@ -16,7 +20,7 @@ class Header extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
         <a className="navbar-brand" href="/">El Baraton</a>
-        <div className="form-inline justify-content-center col">
+        <div className="form-inline categories justify-content-center col">
           <div className="input-group">
             <input type="text" className="form-control" aria-label="Text input with dropdown button" />
             <div className="input-group-btn">
@@ -29,6 +33,7 @@ class Header extends Component {
             </div>
           </div>
         </div>
+        <MenuHeader />
       </nav>
     )
   }

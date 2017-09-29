@@ -28,9 +28,9 @@ class Categories extends Component {
     )
   }
   render() {
-    const { categories } = this.props
+    const { categories, ClassComponent } = this.props
     return (
-      <div>
+      <div className={ClassComponent}>
         {this.renderCategories(categories)}
       </div>
     )
@@ -39,7 +39,8 @@ class Categories extends Component {
 
 Categories.propTypes = {
   categories: PropTypes.array,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  ClassComponent: PropTypes.string
 }
 
 function mapStateToProps(state) {
