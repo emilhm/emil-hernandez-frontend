@@ -80,6 +80,7 @@
     "react-modal": "^2.0.6",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.1.1",
+    "react-toastr": "^2.9.3",
     "redux-thunk": "^2.2.0",
     "styled-components": "^2.0.0",
     "styled-theme": "^0.3.0",

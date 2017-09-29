@@ -9,7 +9,19 @@ class Products extends Component {
     super(props)
     this.state = {
       cart: props.cart,
+      products: []
     }
+  }
+  componentDidMount(){
+    const { match } = this.props
+    this.filterByCategories(parseInt(match.params.category), match.params.search)
+  }
+  componentWillUpdate(nextProps, nextState){
+    const { match } = nextProps
+    if(match.url !== this.props.match.url){
+      this.filterByCategories(parseInt(match.params.category), match.params.search)
+    }
+    // console.log(nextProps.match.url === this.props.match.url);
   }
   toggleToCard = (item) => {
     const { setCart } = this.props
@@ -23,9 +35,29 @@ class Products extends Component {
     this.setState({ cart })
     this.props.setCart(cart)
   }
-  renderProducts = () => {
+  filterByCategories = (categories, search) => {
     const { products } = this.props
-    const { cart } = this.state
+    let filterProducts
+    if(categories){
+      filterProducts = products.filter(item => {
+        return item.sublevel_id === categories
+      })
+      this.setState({products: filterProducts})
+    }
+    if(search){
+      this.filterBySearch(search, filterProducts)
+    }
+  }
+  filterBySearch = (search, products) => {
+    if(search){
+      const filterProducts = products.filter(item => {
+        return item.name.indexOf(`${search}`) !== -1
+      })
+      this.setState({products: filterProducts})
+    }
+  }
+  renderProducts = () => {
+    const { cart, products } = this.state
     return products.map((item) => {
       return (
         <div key={item.id} className="product col-sm-6 col-lg-4 justify-content-center">
@@ -35,9 +67,16 @@ class Products extends Component {
     })
   }
   render() {
+    const { products } = this.state
     return (
       <div className="row">
-        {this.renderProducts()}
+        {products.length > 0 && (this.renderProducts())}
+        {products.length === 0 && (
+          <div className="text-center w-100">
+            No tenemos este producto :(
+          </div>
+          )
+        }
       </div>
     )
   }
@@ -58,6 +97,7 @@ Products.propTypes = {
   products: PropTypes.array,
   cart: PropTypes.array,
   setCart: PropTypes.func,
+  match: PropTypes.object,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Products)

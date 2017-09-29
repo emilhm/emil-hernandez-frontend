@@ -2554,6 +2554,10 @@ electron-to-chromium@^1.2.7, electron-to-chromium@^1.3.18:
   version "1.3.20"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.20.tgz#2eedd5ccbae7ddc557f68ad1fce9c172e915e4e5"
 
+element-class@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/element-class/-/element-class-0.2.2.tgz#9d3bbd0767f9013ef8e1c8ebe722c1402a60050e"
+
 elliptic@^6.0.0:
   version "6.4.0"
   resolved "https://registry.yarnpkg.com/elliptic/-/elliptic-6.4.0.tgz#cac9af8762c85836187003c8dfe193e5e2eae5df"
@@ -3673,6 +3677,12 @@ ignore@^3.2.0:
   version "3.3.5"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.5.tgz#c4e715455f6073a8d7e5dae72d2fc9d71663dba6"
 
+immutability-helper@^2.3.1:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/immutability-helper/-/immutability-helper-2.4.0.tgz#00d421e2957c17f0f0781475f05ffd837e73458d"
+  dependencies:
+    invariant "^2.2.0"
+
 immutable@^3.8.1:
   version "3.8.1"
   resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.1.tgz#200807f11ab0f72710ea485542de088075f68cd2"
@@ -3756,7 +3766,7 @@ interpret@^1.0.0:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.0.3.tgz#cbc35c62eeee73f19ab7b10a801511401afc0f90"
 
-invariant@2.x.x, invariant@^2.0.0, invariant@^2.2.1, invariant@^2.2.2:
+invariant@2.x.x, invariant@^2.0.0, invariant@^2.2.0, invariant@^2.2.1, invariant@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.2.tgz#9e1f56ac0acdb6bf303306f338be3b204ae60360"
   dependencies:
@@ -5954,6 +5964,15 @@ react-dom@^15.5.4:
     object-assign "^4.1.0"
     prop-types "^15.5.10"
 
+react-dom@^15.6.1:
+  version "15.6.2"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.2.tgz#41cfadf693b757faf2708443a1d1fd5a02bef730"
+  dependencies:
+    fbjs "^0.8.9"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.0"
+    prop-types "^15.5.10"
+
 react-hot-loader@3.0.0-beta.6:
   version "3.0.0-beta.6"
   resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-3.0.0-beta.6.tgz#463fac0bfc8b63a8385258af20c91636abce75f4"
@@ -6091,6 +6110,18 @@ react-test-renderer@^15.5.4:
   dependencies:
     fbjs "^0.8.9"
     object-assign "^4.1.0"
+
+react-toastr@^2.9.3:
+  version "2.9.3"
+  resolved "https://registry.yarnpkg.com/react-toastr/-/react-toastr-2.9.3.tgz#52950afaf12f3b30a514d02c1930b1b1cf04ddbc"
+  dependencies:
+    classnames "^2.2.5"
+    create-react-class "^15.6.0"
+    element-class "^0.2.2"
+    immutability-helper "^2.3.1"
+    lodash "^4.17.4"
+    prop-types "^15.5.10"
+    react-dom "^15.6.1"
 
 react-transition-group@^1.1.2:
   version "1.2.0"
