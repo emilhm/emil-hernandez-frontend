@@ -3,12 +3,25 @@ import { Switch, Route, withRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { connect } from 'react-redux'
 import { HomePage, Products, CategoriesComponent, Cart } from 'components'
+import PropTypes from 'prop-types'
 import Header from './Header'
+import { setCart } from './actions'
 
 // https://github.com/diegohaz/arc/wiki/Styling
 import theme from './themes/default'
 
 class App extends Component {
+  componentWillMount() {
+    if (localStorage.getItem('cart')) {
+      const localCart = localStorage.getItem('cart').split(',')
+      const { products, setCart } = this.props
+      const cart = products.filter((item) => {
+        const index = localCart.findIndex(element => element === item.id)
+        return index !== -1
+      })
+      setCart(cart)
+    }
+  }
   render() {
     return (
       <div>
@@ -31,8 +44,15 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    cart: state.cart,
+    products: state.products,
   }
 }
+const mapDispatchToProps = {
+  setCart,
+}
+App.propTypes = {
+  products: PropTypes.array,
+  setCart: PropTypes.func,
+}
 
-export default withRouter(connect(mapStateToProps, null)(App))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App))

@@ -34,8 +34,8 @@ class Header extends Component {
   render() {
     const idCategory = this.props.location.pathname.split('/')[2]
     return (
-      <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
-        <a className="navbar-brand" href="/">El Baraton</a>
+      <nav className="navbar navbar-expand-lg row no-gutters navbar-light bg-light justify-content-center">
+        <a className="navbar-brand col-6 col-sm" href="/">El Baraton</a>
         <div className="form-inline categories justify-content-center col">
           <form onSubmit={this.handleSubmit} className="input-group">
             <input type="text" className="form-control" value={this.state.search} onChange={this.handleChange} aria-label="Text input with dropdown button" />
