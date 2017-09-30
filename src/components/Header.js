@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom'
+import { withRouter, Link } from 'react-router-dom'
 import Categories from './Categories/Categories'
 import MenuHeader from './menuHeader/menuHeader'
+import Toastr from './toastr/toastr'
 
 class Header extends Component {
   constructor(props) {
@@ -25,17 +26,24 @@ class Header extends Component {
     } else if (selectCategory) {
       this.props.history.push(`/products/${selectCategory.id}`)
     } else {
-      console.log('Escoja una categoria')
+      this.container.error(
+        'Escoja una categoria',
+        'Alert', {
+          timeOut: 5000,
+          extendedTimeOut: 3000,
+        })
     }
   }
   handleChange = (event) => {
     this.setState({ search: event.target.value })
   }
+  inputFunction = (input) => { this.container = input }
   render() {
     const idCategory = this.props.location.pathname.split('/')[2]
     return (
       <nav className="navbar navbar-expand-lg row no-gutters navbar-light bg-light justify-content-center">
-        <a className="navbar-brand col-6 col-sm" href="/">El Baraton</a>
+        <Toastr inputFunction={this.inputFunction} />
+        <Link className="navbar-brand col-6 col-sm" to="/">El Baraton</Link>
         <div className="form-inline categories justify-content-center col">
           <form onSubmit={this.handleSubmit} className="input-group">
             <input type="text" className="form-control" value={this.state.search} onChange={this.handleChange} aria-label="Text input with dropdown button" />

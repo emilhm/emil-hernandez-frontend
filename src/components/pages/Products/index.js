@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Product } from 'components'
+import Toastr from '../../toastr/toastr'
 import { setCart } from '../../actions'
 
 class Products extends Component {
@@ -32,6 +33,12 @@ class Products extends Component {
     }
     this.setState({ cart })
     this.props.setCart(cart)
+    this.container.success(
+      index === -1 ? `${item.name} añadido al carrito` : `${item.name} removido del carrito`,
+      'Alert', {
+        timeOut: 5000,
+        extendedTimeOut: 3000,
+      })
   }
   filterByCategories = (categories, search) => {
     const { products } = this.props
@@ -68,6 +75,7 @@ class Products extends Component {
     const { products } = this.state
     return (
       <div className="row">
+        <Toastr inputFunction={(input) => { this.container = input }} />
         {products.length > 0 && (this.renderProducts())}
         {products.length === 0 && (
           <div className="text-center w-100">

@@ -20,7 +20,7 @@ export function setCart(data) {
   return (dispatch) => {
     dispatch({
       type: 'SET_CART',
-      data: data
-    });
+      data,
+    })
   }
 }

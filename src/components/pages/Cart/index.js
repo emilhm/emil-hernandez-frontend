@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import Product from '../Product'
-import { setCart } from '../../actions'
 import { Link } from 'react-router-dom'
+import Product from '../Product'
+import Toastr from '../../toastr/toastr'
+import { setCart } from '../../actions'
 
 class Cart extends Component {
   constructor(props) {
@@ -19,9 +20,23 @@ class Cart extends Component {
       cart.splice(index, 1)
       this.props.setCart(cart)
       this.setState({ cart })
+      this.container.success(
+        `${item.name} removido al carrito`,
+        'Alert', {
+          timeOut: 5000,
+          extendedTimeOut: 3000,
+        }
+      )
     } else {
       this.props.setCart([])
       this.setState({ cart: [] })
+      this.container.success(
+        'Gracias por su compra',
+        'Alert', {
+          timeOut: 5000,
+          extendedTimeOut: 3000,
+        }
+      )
     }
   }
   renderCart = (cart) => {
@@ -38,6 +53,7 @@ class Cart extends Component {
     if (cart.length) {
       return (
         <div className="content-cart">
+          <Toastr inputFunction={(input) => { this.container = input }} />
           {this.renderCart(cart)}
           <div className="text-right">
             <button type="button"onClick={() => this.toggleToCard()} className="btn btn-primary">Comprar</button>

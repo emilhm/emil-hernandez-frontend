@@ -5964,15 +5964,6 @@ react-dom@^15.5.4:
     object-assign "^4.1.0"
     prop-types "^15.5.10"
 
-react-dom@^15.6.1:
-  version "15.6.2"
-  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-15.6.2.tgz#41cfadf693b757faf2708443a1d1fd5a02bef730"
-  dependencies:
-    fbjs "^0.8.9"
-    loose-envify "^1.1.0"
-    object-assign "^4.1.0"
-    prop-types "^15.5.10"
-
 react-hot-loader@3.0.0-beta.6:
   version "3.0.0-beta.6"
   resolved "https://registry.yarnpkg.com/react-hot-loader/-/react-hot-loader-3.0.0-beta.6.tgz#463fac0bfc8b63a8385258af20c91636abce75f4"
@@ -6111,9 +6102,9 @@ react-test-renderer@^15.5.4:
     fbjs "^0.8.9"
     object-assign "^4.1.0"
 
-react-toastr@^2.9.3:
-  version "2.9.3"
-  resolved "https://registry.yarnpkg.com/react-toastr/-/react-toastr-2.9.3.tgz#52950afaf12f3b30a514d02c1930b1b1cf04ddbc"
+react-toastr@^2.9.4:
+  version "2.9.4"
+  resolved "https://registry.yarnpkg.com/react-toastr/-/react-toastr-2.9.4.tgz#13bec052b470a68a754e70f5d29c67ec44365ead"
   dependencies:
     classnames "^2.2.5"
     create-react-class "^15.6.0"
@@ -6121,7 +6112,6 @@ react-toastr@^2.9.3:
     immutability-helper "^2.3.1"
     lodash "^4.17.4"
     prop-types "^15.5.10"
-    react-dom "^15.6.1"
 
 react-transition-group@^1.1.2:
   version "1.2.0"
