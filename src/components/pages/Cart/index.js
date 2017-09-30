@@ -43,19 +43,24 @@ class Cart extends Component {
     return cart.map((item) => {
       return (
         <div key={item.id} className="cart-product" >
-          <Product item={item} toggleToCard={this.toggleToCard} inCart={cart.findIndex(element => element.id === item.id)} />
+          <Product item={item} cartBoolean toggleToCard={this.toggleToCard} inCart={cart.findIndex(element => element.id === item.id)} />
         </div>
       )
     })
   }
   render() {
     const { cart } = this.state
+    const total = cart.reduce((a, b) => a + parseInt(b.price.replace(',', ''), 10)
+    , 0)
     if (cart.length) {
       return (
         <div className="content-cart">
           <h2 className="text-center">Carrito</h2>
           <Toastr inputFunction={(input) => { this.container = input }} />
           {this.renderCart(cart)}
+          <div className="text-right total">
+            ${total}
+          </div>
           <div className="text-right">
             <button type="button" onClick={() => this.toggleToCard()} className="btn btn-primary">Comprar</button>
           </div>

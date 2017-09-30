@@ -45,6 +45,7 @@ product.propTypes = {
   item: PropTypes.object,
   toggleToCard: PropTypes.func,
   inCart: PropTypes.number,
+  cartBoolean: PropTypes.bool,
 }
 
 export default product
