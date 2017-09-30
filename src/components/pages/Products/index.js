@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Product } from 'components'
 import Toastr from '../../toastr/toastr'
+import Filters from '../../filter/filter'
 import { setCart } from '../../actions'
 
 class Products extends Component {
@@ -11,6 +12,7 @@ class Products extends Component {
     this.state = {
       cart: props.cart,
       products: [],
+      filterProducts: [],
     }
   }
   componentDidMount() {
@@ -47,23 +49,27 @@ class Products extends Component {
       filterProducts = products.filter((item) => {
         return item.sublevel_id === categories
       })
-      this.setState({ products: filterProducts })
+      this.setState({ products: filterProducts, filterProducts })
     }
     if (search) {
       this.filterBySearch(search, filterProducts)
     }
   }
   filterBySearch = (search, products) => {
+    let filterProducts
     if (search) {
-      const filterProducts = products.filter((item) => {
+      filterProducts = products.filter((item) => {
         return item.name.indexOf(`${search}`) !== -1
       })
-      this.setState({ products: filterProducts })
+      this.setState({ products: filterProducts, filterProducts })
     }
   }
+  updateProduct = (filterProducts) => {
+    this.setState({ filterProducts })
+  }
   renderProducts = () => {
-    const { cart, products } = this.state
-    return products.map((item) => {
+    const { cart, filterProducts } = this.state
+    return filterProducts.map((item) => {
       return (
         <div key={item.id} className="product col-sm-6 col-lg-4 justify-content-center">
           <Product item={item} toggleToCard={this.toggleToCard} inCart={cart.findIndex(element => element.id === item.id)} />
@@ -72,17 +78,20 @@ class Products extends Component {
     })
   }
   render() {
-    const { products } = this.state
+    const { products, filterProducts } = this.state
     return (
-      <div className="row">
+      <div className="content-products">
         <Toastr inputFunction={(input) => { this.container = input }} />
-        {products.length > 0 && (this.renderProducts())}
-        {products.length === 0 && (
-          <div className="text-center w-100">
-            No tenemos este producto :(
-          </div>
-          )
-        }
+        <Filters products={products} updateProduct={this.updateProduct} />
+        <div className="row">
+          {filterProducts.length > 0 && (this.renderProducts())}
+          {filterProducts.length === 0 && (
+            <div className="text-center w-100">
+              No tenemos este producto :(
+            </div>
+            )
+          }
+        </div>
       </div>
     )
   }

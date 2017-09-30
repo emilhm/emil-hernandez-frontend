@@ -19,7 +19,7 @@ class product extends Component {
         <div className="row no-gutters align-items-center">
           <div className="col">
             <h3>{item.name}</h3>
-            <div className="price">Precio: {item.price}</div>
+            <div className="price">Precio: ${item.price}</div>
             <div className="quantity">Stock: {item.quantity}</div>
           </div>
           <div className="col-3 text-center">
