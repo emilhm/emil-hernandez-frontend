@@ -25,6 +25,17 @@ class Products extends Component {
       this.filterByCategories(parseInt(match.params.category, 10), match.params.search)
     }
   }
+  order = (order) => {
+    const newOrder = this.state.filterProducts.sort((a, b) => {
+      if (order === 'Precio') {
+        return parseInt(a.price.replace(',', ''), 10) - parseInt(b.price.replace(',', ''), 10)
+      } else if (order === 'Disponibilidad') {
+        return a.available ? -1 : 1
+      }
+      return parseInt(a.quantity, 10) - parseInt(b.quantity, 10)
+    })
+    this.setState({ filterProducts: newOrder, orderName: order })
+  }
   toggleToCard = (item) => {
     const { cart } = this.state
     const index = cart.findIndex(element => element.id === item.id)
@@ -82,7 +93,7 @@ class Products extends Component {
     return (
       <div className="content-products">
         <Toastr inputFunction={(input) => { this.container = input }} />
-        <Filters products={products} updateProduct={this.updateProduct} />
+        <Filters products={products} orderName={this.state.orderName} order={this.order} updateProduct={this.updateProduct} />
         <h2 className="text-center">Agrega al carrito de compra</h2>
         <div className="row">
           {filterProducts.length > 0 && (this.renderProducts())}

@@ -15,6 +15,7 @@ class Filters extends Component {
     if (nextProps.products !== this.props.products) {
       this.setState({
         products: nextProps.products,
+        orderName: nextProps.orderName
       })
     }
   }
@@ -30,6 +31,20 @@ class Filters extends Component {
     setTimeout(() => {
       this.applyFilter()
     }, 10)
+  }
+  orderBy = () => {
+    return (
+      <div className="dropdown">
+        <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Ordenar Por: {this.props.orderName}
+        </button>
+        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a className="dropdown-item" role="presentation" onClick={() => this.props.order('Precio')}>Precio</a>
+          <a className="dropdown-item" role="presentation" onClick={() => this.props.order('Disponibilidad')}>Disponibilidad</a>
+          <a className="dropdown-item" role="presentation" onClick={() => this.props.order('Cantidad')}>Cantidad</a>
+        </div>
+      </div>
+    )
   }
   filters = () => {
     const { products } = this.props
@@ -123,6 +138,9 @@ class Filters extends Component {
                 </label>
               </div>
             </div>
+            <div className="availableFilter col-12 col-md-6 col-lg-4">
+              {this.orderBy()}
+            </div>
           </div>
         </div>
       </div>
@@ -133,6 +151,8 @@ class Filters extends Component {
 Filters.propTypes = {
   updateProduct: PropTypes.func,
   products: PropTypes.array,
+  order: PropTypes.func,
+  orderName: PropTypes.string,
 }
 
 export default Filters
