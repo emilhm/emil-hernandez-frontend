@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, withRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
-import { withRouter } from "react-router-dom";
-
+import { connect } from 'react-redux'
 import { HomePage, Products, CategoriesComponent, Cart } from 'components'
 import Header from './Header'
 
@@ -10,10 +9,10 @@ import Header from './Header'
 import theme from './themes/default'
 
 class App extends Component {
-  render(){
+  render() {
     return (
       <div>
-        <Header update={() => this.forceUpdate} />
+        <Header />
         <div className="container">
           <ThemeProvider theme={theme}>
             <Switch>
@@ -21,7 +20,7 @@ class App extends Component {
               <Route path="/products/:category/:search" component={Products} />
               <Route path="/products/:category" component={Products} />
               <Route path="/categories" component={CategoriesComponent} exact />
-              <Route path="/cart" component={Cart} />
+              <Route path="/cart" component={Cart} exact />
             </Switch>
           </ThemeProvider>
         </div>
@@ -30,4 +29,10 @@ class App extends Component {
   }
 }
 
-export default withRouter(App)
+function mapStateToProps(state) {
+  return {
+    cart: state.cart,
+  }
+}
+
+export default withRouter(connect(mapStateToProps, null)(App))

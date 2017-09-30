@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 import Categories from '../../Categories/Categories'
 
-const CategoriesComponent = ({}) => {
+const CategoriesComponent = () => {
   return (
     <Categories ClassComponent="categoriesComponent" />
-  );
+  )
 }
 
-export default CategoriesComponent;
+export default CategoriesComponent

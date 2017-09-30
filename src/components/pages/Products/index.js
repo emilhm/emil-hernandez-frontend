@@ -9,22 +9,20 @@ class Products extends Component {
     super(props)
     this.state = {
       cart: props.cart,
-      products: []
+      products: [],
     }
   }
-  componentDidMount(){
+  componentDidMount() {
     const { match } = this.props
-    this.filterByCategories(parseInt(match.params.category), match.params.search)
+    this.filterByCategories(parseInt(match.params.category, 10), match.params.search)
   }
-  componentWillUpdate(nextProps, nextState){
+  componentWillUpdate(nextProps) {
     const { match } = nextProps
-    if(match.url !== this.props.match.url){
-      this.filterByCategories(parseInt(match.params.category), match.params.search)
+    if (match.url !== this.props.match.url) {
+      this.filterByCategories(parseInt(match.params.category, 10), match.params.search)
     }
-    // console.log(nextProps.match.url === this.props.match.url);
   }
   toggleToCard = (item) => {
-    const { setCart } = this.props
     const { cart } = this.state
     const index = cart.findIndex(element => element.id === item.id)
     if (index === -1) {
@@ -38,22 +36,22 @@ class Products extends Component {
   filterByCategories = (categories, search) => {
     const { products } = this.props
     let filterProducts
-    if(categories){
-      filterProducts = products.filter(item => {
+    if (categories) {
+      filterProducts = products.filter((item) => {
         return item.sublevel_id === categories
       })
-      this.setState({products: filterProducts})
+      this.setState({ products: filterProducts })
     }
-    if(search){
+    if (search) {
       this.filterBySearch(search, filterProducts)
     }
   }
   filterBySearch = (search, products) => {
-    if(search){
-      const filterProducts = products.filter(item => {
+    if (search) {
+      const filterProducts = products.filter((item) => {
         return item.name.indexOf(`${search}`) !== -1
       })
-      this.setState({products: filterProducts})
+      this.setState({ products: filterProducts })
     }
   }
   renderProducts = () => {
@@ -90,8 +88,8 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-  setCart
-};
+  setCart,
+}
 
 Products.propTypes = {
   products: PropTypes.array,

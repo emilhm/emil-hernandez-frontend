@@ -1,41 +1,38 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import Categories from './Categories/Categories'
 import MenuHeader from './menuHeader/menuHeader'
 
 class Header extends Component {
-  constructor(props){
+  constructor(props) {
     super(props)
     const search = this.props.location.pathname.split('/')[3]
     this.state = {
       selectCategory: undefined,
       selectCategoryName: undefined,
-      search: search ? search: ''
+      search: search || '',
     }
   }
-  onClick = (item) =>{
-    this.setState({selectCategory: item, selectCategoryName: item.name})
+  onClick = (item) => {
+    this.setState({ selectCategory: item, selectCategoryName: item.name })
   }
   handleSubmit = (event) => {
-    event.preventDefault();
+    event.preventDefault()
     const { search, selectCategory } = this.state
-    if(search && selectCategory){
+    if (search && selectCategory) {
       this.props.history.push(`/products/${selectCategory.id}/${search}`)
-    }
-    else if (selectCategory) {
+    } else if (selectCategory) {
       this.props.history.push(`/products/${selectCategory.id}`)
-    }
-    else {
-      console.log(this.refs);
+    } else {
+      console.log('Escoja una categoria')
     }
   }
   handleChange = (event) => {
-    this.setState({search: event.target.value})
+    this.setState({ search: event.target.value })
   }
   render() {
-  const idCategory = this.props.location.pathname.split('/')[2]
+    const idCategory = this.props.location.pathname.split('/')[2]
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
         <a className="navbar-brand" href="/">El Baraton</a>
@@ -44,7 +41,7 @@ class Header extends Component {
             <input type="text" className="form-control" value={this.state.search} onChange={this.handleChange} aria-label="Text input with dropdown button" />
             <div className="input-group-btn">
               <button type="button" className="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {this.state.selectCategoryName || "Categorias" }
+                {this.state.selectCategoryName || 'Categorias' }
               </button>
               <div className="dropdown-menu">
                 <Categories onClick={this.onClick} idCategory={idCategory} />
@@ -59,7 +56,8 @@ class Header extends Component {
 }
 
 Header.propTypes = {
-  history: PropTypes.object
+  history: PropTypes.object,
+  location: PropTypes.object,
 }
 
 export default withRouter(Header)

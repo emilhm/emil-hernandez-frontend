@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 class product extends Component {
@@ -23,7 +22,7 @@ class product extends Component {
             <div className="price">Precio: {item.price}</div>
             <div className="quantity">Stock: {item.quantity}</div>
           </div>
-          <div className="col-2 col-sm-3">
+          <div className="col-3 text-center">
             <img className="card-img-top" alt={item.name} src="https://cdn-images-1.medium.com/max/512/1*qUlxDdY3T-rDtJ4LhLGkEg.png" />
           </div>
         </div>
@@ -42,16 +41,10 @@ class product extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    products: state.products,
-  }
-}
-
 product.propTypes = {
   item: PropTypes.object,
   toggleToCard: PropTypes.func,
   inCart: PropTypes.number,
 }
 
-export default connect(mapStateToProps, null)(product)
+export default product

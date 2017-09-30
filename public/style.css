@@ -58,7 +58,7 @@ nav .finalLevel{
   color: limegreen;
   position: absolute;
   right: 10px;
-  top: 5px;
+  top: 25px;
 }
 .content-product h3 {
   font-weight: bold;
@@ -86,4 +86,31 @@ nav .finalLevel{
 .categoriesComponent .finalLevel  {
   cursor: pointer;
   color: black;
+}
+
+/* Cart */
+.cart-product {
+    max-width: 1000px;
+    margin: auto;
+}
+.cart-product .content-product {
+  background: white;
+  border-bottom: 1px solid gray;
+  border-width: 1px 0;
+  border-radius: 0;
+  margin-bottom: 1rem;
+}
+.cart-product img{
+  max-width: 120px;
+}
+.cart-product button {
+  margin-right: 1rem;
+}
+.content-cart > .text-right{
+  max-width: 1000px;
+  padding: 0.5rem 0.5rem;
+  margin: auto;
+}
+.content-cart > .text-right button{
+  margin-right: 1rem;
 }
