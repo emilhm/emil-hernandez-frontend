@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Switch, Route, withRouter } from 'react-router-dom'
 import { ThemeProvider } from 'styled-components'
 import { connect } from 'react-redux'
-import { HomePage, Products, CategoriesComponent, Cart } from 'components'
+import { Products, CategoriesComponent, Cart } from 'components'
 import PropTypes from 'prop-types'
 import Header from './Header'
 import { setCart } from './actions'
@@ -29,10 +29,9 @@ class App extends Component {
         <div className="container">
           <ThemeProvider theme={theme}>
             <Switch>
-              <Route path="/" component={HomePage} exact />
+              <Route path="/" component={CategoriesComponent} exact />
               <Route path="/products/:category/:search" component={Products} />
               <Route path="/products/:category" component={Products} />
-              <Route path="/categories" component={CategoriesComponent} exact />
               <Route path="/cart" component={Cart} exact />
             </Switch>
           </ThemeProvider>

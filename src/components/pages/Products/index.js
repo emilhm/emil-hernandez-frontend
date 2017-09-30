@@ -83,12 +83,13 @@ class Products extends Component {
       <div className="content-products">
         <Toastr inputFunction={(input) => { this.container = input }} />
         <Filters products={products} updateProduct={this.updateProduct} />
+        <h2 className="text-center">Agrega al carrito de compra</h2>
         <div className="row">
           {filterProducts.length > 0 && (this.renderProducts())}
           {filterProducts.length === 0 && (
-            <div className="text-center w-100">
+            <h2 className="text-center">
               No tenemos este producto :(
-            </div>
+            </h2>
             )
           }
         </div>

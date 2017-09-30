@@ -98,7 +98,10 @@ nav .menuHeader {
 }
 
 /* categories */
-
+h2{
+  margin: 1rem 0px;
+  color: darkslategray;
+}
 .categoriesComponent {
   display: flex;
   justify-content: space-between;
@@ -172,6 +175,7 @@ nav .menuHeader {
 .filters .fa-chevron-circle-right{
   margin-top: 6px;
   font-size: 25px;
+  color: #007bff;
 }
 .filters input {
   max-width: 85px;

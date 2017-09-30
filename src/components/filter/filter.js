@@ -97,7 +97,7 @@ class Filters extends Component {
         </a>
         <div className="collapse" id="collapseExample">
           <div className="filters bg-light row no-gutters">
-            <div className="priceFilter col-12 col-sm-6 col-lg-4">
+            <div className="priceFilter col-12 col-md-6 col-lg-4">
               <h5>Precio</h5>
               <div className="input-group">
                 <input type="number" className="form-control" name="lessPrice" onChange={this.handler} placeholder="Minimo" value={this.state.lessPrice} aria-label="Text input with dropdown button" />
@@ -106,7 +106,7 @@ class Filters extends Component {
                 <i className="fa fa-chevron-circle-right" onClick={this.filters} aria-hidden="true" />
               </div>
             </div>
-            <div className="quantityFilter col-12 col-sm-6 col-lg-4">
+            <div className="quantityFilter col-12 col-md-6 col-lg-4">
               <h5>Cantidad</h5>
               <div className="input-group">
                 <input type="number" className="form-control" name="lessQuantity" onChange={this.handler} placeholder="Minimo" value={this.state.lessQuantity} aria-label="Text input with dropdown button" />
@@ -115,7 +115,7 @@ class Filters extends Component {
                 <i className="fa fa-chevron-circle-right" onClick={this.filters} aria-hidden="true" />
               </div>
             </div>
-            <div className="availableFilter col-12 col-sm-6 col-lg-4">
+            <div className="availableFilter col-12 col-md-6 col-lg-4">
               <h5>Disponibilidad</h5>
               <div className="form-check">
                 <label htmlFor="as" className="form-check-label">

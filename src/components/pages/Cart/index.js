@@ -53,18 +53,19 @@ class Cart extends Component {
     if (cart.length) {
       return (
         <div className="content-cart">
+          <h2 className="text-center">Carrito</h2>
           <Toastr inputFunction={(input) => { this.container = input }} />
           {this.renderCart(cart)}
           <div className="text-right">
-            <button type="button"onClick={() => this.toggleToCard()} className="btn btn-primary">Comprar</button>
+            <button type="button" onClick={() => this.toggleToCard()} className="btn btn-primary">Comprar</button>
           </div>
         </div>
       )
     }
     return (
-      <div className="text-center">
-        No has agregado nada al carrito :(, <Link to="/categories">haz click aqui para buscar por categorias</Link>
-      </div>
+      <h2 className="text-center">
+        No has agregado nada al carrito :(, <br /><Link to="/">haz click aqui para buscar por categorias</Link>
+      </h2>
     )
   }
 }

@@ -43,7 +43,9 @@ class Header extends Component {
     return (
       <nav className="navbar navbar-expand-lg row no-gutters navbar-light bg-light justify-content-center">
         <Toastr inputFunction={this.inputFunction} />
-        <Link className="navbar-brand col-6 col-sm" to="/">El Baraton</Link>
+        <Link className="navbar-brand col-6 col-sm" to="/">
+          <img alt="logo" className="card-img-top" src="/logo.png" />
+        </Link>
         <div className="form-inline categories justify-content-center col">
           <form onSubmit={this.handleSubmit} className="input-group">
             <input type="text" className="form-control" value={this.state.search} onChange={this.handleChange} aria-label="Text input with dropdown button" />

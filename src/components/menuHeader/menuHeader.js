@@ -7,8 +7,7 @@ const MenuHeader = () => (
       <i className="fa fa-bars" />
     </button>
     <div className="dropdown-menu dropdown-menu-right">
-      <Link className="dropdown-item" to="/">Home</Link>
-      <Link className="dropdown-item" to="/categories">Categorias</Link>
+      <Link className="dropdown-item" to="/">Categorias</Link>
       <Link className="dropdown-item" to="/cart">Cart</Link>
     </div>
   </div>
